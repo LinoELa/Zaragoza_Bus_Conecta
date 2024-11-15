@@ -15,22 +15,24 @@ La principal persona que me llevo a desarrollar el proyecto Mi Pareja que cada v
 
 - Base de datos : Postgres SQL 
 
-- lenguaje Principal : Python 
+- Lenguaje Principal : Python 
 
 - Framework Principal : Django
 
+- Framework Front End Bootstrap 
 
+#### Tecnologías Secundarias (Necesarios)
 - BeatifulSoup 
 
 - Selenium 
 
 - Requests & Lxml
 
-- Sistema de Autenficacion 
+#### Tecnologías Usabilidad
 
-- Git - GitHub
+- Control de Versiones : Git - GitHub
 
-- Bootstrap 
+- Token : Sistema de Autenficacion 
 
 - Anaconda Environment ( Conda)
 

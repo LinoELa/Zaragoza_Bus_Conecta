@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if user.is_authenticated  %}
+
+<main class="flex-shrink-0">
+
+    <!-- Page content-->
+    <section class="">
+        <div class="container px-5 mb-5">
+            <!-- Contact form-->
+            <div class="bg-light rounded-4 px-md-5">
+                <div class="text-center mb-5">
+                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i
+                            class="bi bi-door-open-fill"></i></div>
+                    <h1 class="fw-bolder">Agregar Contenido</h1>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6">
+                        {% comment %} --- PART 13.07 - FORMULARIO LOG IN --- {% endcomment %}
+                        <form method='POST' action={% url 'agregar' %} id="contactForm">
+
+                            {% comment %} --- PART 13.08 --- {% endcomment %}
+                            {% csrf_token %}
+
+                            <!-- 13.06 Render Django form fields -->
+                            {{ formulario.as_p }}
+
+
+                            <!-- Submit Button-->
+                            <div class="d-grid">
+                                <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+{% else %}
+
+
+<!-- Error 404 Template 1 -  -->
+<section class="mx-auto vh-100 d-flex justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h2 class="d-flex justify-content-center align-items-center gap-2">
+                        <span class="display-1 fw-bold">4</span>
+                        <i class="bi bi-exclamation-circle-fill text-danger display-4"></i>
+                        <span class="display-1 fw-bold bsb-flip-h">4</span>
+                    </h2>
+                    <h3 class="h2 mb-2">Oops! Estas perdido</h3>
+                    <p class="mb-5">No se ha encontrado la página que busca</p>
+                    <a class="btn bsb-btn-5xl btn-dark rounded-pill px-5 fs-6 m-0" href="{% url 'home' %}"
+                        role="button">Volver a Inicio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endif %}
+
+
+
+{% endblock %}

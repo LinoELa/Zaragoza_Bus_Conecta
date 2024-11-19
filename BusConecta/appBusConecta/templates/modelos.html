@@ -1,0 +1,283 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+<!-- 11 -->
+<div class='container'>
+
+{% if user.is_authenticated  %}
+
+
+    {% comment %} ------------------------- INFORMACION INTRO ---------------------------- {% endcomment %}
+
+
+    <table class="table table-hover table-bordered bg-dark">
+        <thead class="shadow bg-dark">
+            <tr>
+                <th scope="col" class='shadow text-center fw-bold fs-3 text-white'>{{ modelo_individual.inicio}}</th>
+                <th scope="col" class='shadow text-center fw-bold fs-3 text-white'>{{ modelo_individual.final}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- Espacio limpio -->
+        </tbody>
+    </table>
+
+    <!-- 11 -->
+    <!-- SECCION : NOTAS -->
+    <div>
+
+        <!-- 11 -->
+
+        {% comment %} ------------------------- INFORMACION BOTONES ---------------------------- {% endcomment %}
+
+
+        <div class='mb-3 d-flex justify-content-center'>
+            <button type="button" class="btn btn-secondary mx-3 px-3"><a href="{% url 'inicio' %}"
+                    class='text-white fw-bold' style="text-decoration:none;">Atras</a></button>
+
+            <!-- PART 14.01 - tambien indicar el id del contenido a actualizar  actualizar -->
+            <button type="button" class="btn btn-success mx-3 px-3"><a
+                    href="{% url 'actualizar' modelo_individual.id %}" class='text-white fw-bold'
+                    style="text-decoration:none;">Actualizar</a></button>
+
+            <!-- 12 -->
+            <button type="button" class="btn btn-danger mx-3 px-3"><a href="{% url 'borrar' modelo_individual.id %}"
+                    class='text-white fw-bold' style="text-decoration:none;">Borrar</a></button>
+        </div>
+
+        <!-- 11 -->
+        {% comment %} ------------------------- INFORMACION NOTAS ---------------------------- {% endcomment %}
+
+
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class=" text-center bg-info text-white fw-bold text-white accordion-button collapsed"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                        aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                        NOTAS
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" style="">
+                    <div class="accordion-body">
+                        <div class="accordion-body">
+                            <section>
+                                <!-- Experience Card 2-->
+                                <div class="card shadow border-0 rounded-4 mb-5">
+                                    <div class="card-body p-4">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <div>{{ modelo_individual.notas}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+
+
+        <!-- 11 -->
+        {% comment %} ------------------------- INFORMACION POSTE 1 ---------------------------- {% endcomment %}
+
+    </div>
+    <div class='container'>
+
+        <table class="table table-hover table-bordered mt-2 ">
+            <thead class="table-light shadow">
+                <tr>
+                    <th scope="col" class='shadow border-0 text-center'>POSTE: <span
+                            class='text-danger'>{{ modelo_individual.poste_1}}</span></th>
+                </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+        </table>
+
+        <!-- Espacio limpio -->
+
+
+        {% comment %} PART 16 Tablas {% endcomment %}
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    {% comment %} <th scope="col">Numero</th> {% endcomment %}
+                    <th scope="col">linea</th>
+                    <th scope="col">Destino a</th>
+                    <th scope="col">Minutos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elementos_1 in datos_1  %}
+                <tr>
+
+                    {% comment %} <td scope='row'> {{ forloop.counter}} </td> {% endcomment %}
+
+                    <td> {{ elementos_1.0}} </td>
+
+                    <td> {{ elementos_1.1 }} </td>
+
+                    <td> {{ elementos_1.2 }} </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+
+
+    </div>
+
+    <br />
+
+
+
+
+    {% comment %} -------------------------POSTE 2 PART 11 ---------------------------- {% endcomment %}
+
+    <div class='container'>
+
+        <table class="table table-hover table-bordered mt-2 ">
+            <thead class="table-light shadow">
+                <tr>
+                    <th scope="col" class='shadow border-0 text-center'>POSTE: <span
+                            class='text-danger'>{{ modelo_individual.poste_2}}</span></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- Espacio limpio -->
+            </tbody>
+        </table>
+
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    {% comment %} <th scope="col">Numero</th> {% endcomment %}
+                    <th scope="col">linea</th>
+                    <th scope="col">Destino a</th>
+                    <th scope="col">Minutos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elementos_1 in datos_2  %}
+                <tr>
+
+                    {% comment %} <td scope='row'> {{ forloop.counter}} </td> {% endcomment %}
+
+                    <td> {{ elementos_1.0}} </td>
+
+                    <td> {{ elementos_1.1 }} </td>
+
+                    <td> {{ elementos_1.2 }} </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <br />
+
+    {% comment %} -------------------------POSTE 2 PART 11 ---------------------------- {% endcomment %}
+
+
+
+    <div class='container mb-3'>
+
+        <table class="table table-hover table-bordered mt-2 ">
+            <thead class="table-light shadow">
+                <tr>
+                    <th scope="col" class='shadow border-0 text-center'>POSTE: <span
+                            class='text-danger'>{{ modelo_individual.poste_3}}</span></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- Espacio limpio -->
+            </tbody>
+        </table>
+
+
+        <table class="table table-hover table-bordered mb-2">
+            <thead class="table-dark">
+                <tr>
+                    {% comment %} <th scope="col">Numero</th> {% endcomment %}
+                    <th scope="col">linea</th>
+                    <th scope="col">Destino a</th>
+                    <th scope="col">Minutos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elementos_1 in datos_3  %}
+                <tr>
+
+                    {% comment %} <td scope='row'> {{ forloop.counter}} </td> {% endcomment %}
+
+                    <td> {{ elementos_1.0}} </td>
+
+                    <td> {{ elementos_1.1 }} </td>
+
+                    <td> {{ elementos_1.2 }} </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+
+    </div>
+    
+</div>
+
+{% else %}
+
+
+<!-- Error 404 Template 1 -  -->
+<section class="mx-auto vh-100 d-flex justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h2 class="d-flex justify-content-center align-items-center gap-2">
+                        <span class="display-1 fw-bold">4</span>
+                        <i class="bi bi-exclamation-circle-fill text-danger display-4"></i>
+                        <span class="display-1 fw-bold bsb-flip-h">4</span>
+                    </h2>
+                    <h3 class="h2 mb-2">Oops! Estas perdido</h3>
+                    <p class="mb-5">No se ha encontrado la página que busca</p>
+                    <a class="btn bsb-btn-5xl btn-dark rounded-pill px-5 fs-6 m-0" href="{% url 'inicio' %}"
+                        role="button">Volver a Inicio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endif %}
+
+
+{% endblock %}

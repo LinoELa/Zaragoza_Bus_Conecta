@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- Par que SI aparezca cuando as inicido session -->
+
+
+{% block content %}
+
+<div class='container'>
+
+    {% if user.is_authenticated %}
+
+    <!-- 13.05 Agregar el link  para que se vea -->
+    <div class='align-self-start '>
+        <a href="{% url 'agregar' %}" class="btn btn-success mt-3 fw-bold">Agregar Contacto </a>
+    </div>
+
+    <br />
+
+
+    {% comment %} PART 9.01 Tablas {% endcomment %}
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Inicio</th>
+                <th scope="col">Final</th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+            <!-- 10 D - bucles  -->
+            {% if modelo %}
+            {% for modelo_usuario in modelo  %}
+
+            <tr>
+                <td>
+                    <a href="{% url 'modelos' modelo_usuario.id %}" style="text-decoration:none;">
+                        {{ modelo_usuario.inicio}}
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'modelos' modelo_usuario.id %}" style="text-decoration:none;">
+                        {{modelo_usuario.final}}
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+            {% endif %}
+        </tbody>
+
+
+    </table>
+
+
+    {% else %}
+
+    <!-- Error 404 Template 1 -  -->
+    <section class="mx-auto vh-100 d-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center">
+                        <h2 class="d-flex justify-content-center align-items-center gap-2">
+                            <span class="display-1 fw-bold">4</span>
+                            <i class="bi bi-exclamation-circle-fill text-danger display-4"></i>
+                            <span class="display-1 fw-bold bsb-flip-h">4</span>
+                        </h2>
+                        <h3 class="h2 mb-2">Oops! Estas perdido</h3>
+                        <p class="mb-5">No se ha encontrado la página que busca</p>
+                        <a class="btn bsb-btn-5xl btn-dark rounded-pill px-5 fs-6 m-0" href="{% url 'home' %}"
+                            role="button">Volver a Inicio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endif %}
+
+
+</div>
+
+
+
+
+
+{% endblock  %}
